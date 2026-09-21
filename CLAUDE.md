@@ -17,3 +17,8 @@ Ghostty-Fenster + `claude`. Nutzer-Doku: README.md (englisch, für GitHub).
 
 ## Release
 Version in `src/info.plist` hochzählen → `./build.sh` → `gh release create v<version> dist/*.alfredworkflow`.
+
+## Stand
+- 21.09.2026: GitHub public (`Bonobo007/alfred-claude-code-projects`), Release v1.1.
+- 21.09.2026: Post in alfredforum.com „Share your Workflows“ abgeschickt (Account `kirilldesign`), wartet auf Moderator.
+- Gallery: nur auf Einladung, wenn der Workflow im Forum als stabil gilt. Offen: Einladung abwarten.
