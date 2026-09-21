@@ -36,6 +36,11 @@ reliable way to get a real new window.
 
 Download the `.alfredworkflow` from [Releases](../../releases) and double-click it.
 
+## AI disclosure
+
+This workflow was built with the help of Claude Code (an LLM coding assistant).
+I use it daily and reviewed and tested it myself.
+
 ## License
 
 MIT

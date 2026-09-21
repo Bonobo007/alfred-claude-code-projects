@@ -20,4 +20,6 @@ On macOS, Ghostty turns every CLI launch (`open -na`, `ghostty -e …`) into a t
 **Download / source**
 https://github.com/Bonobo007/alfred-claude-code-projects/releases/latest
 
+Disclosure: I built this with the help of Claude Code (an LLM coding assistant); I use it daily and tested it myself.
+
 Feedback welcome!
