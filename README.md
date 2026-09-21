@@ -1,11 +1,11 @@
 # Claude Code Projects — Alfred Workflow
 
-Type `cc` plus a few letters, pick a project folder, and [Claude Code](https://claude.com/claude-code)
+Type `ccp` (configurable) plus a few letters, pick a project folder, and [Claude Code](https://claude.com/claude-code)
 starts in a **new Ghostty window** inside that folder.
 
 ## Usage
 
-`cc <letters>` fuzzy-searches the top-level folders of `~/projects`.
+`ccp <letters>` fuzzy-searches the top-level folders of `~/projects`.
 Folders that contain `CLAUDE.md` or `.claude/` rank higher.
 
 | Key | Action |
@@ -17,7 +17,7 @@ Folders that contain `CLAUDE.md` or `.claude/` rank higher.
 
 ## Configuration
 
-Workflow variable `PROJECTS_DIR` (default `~/projects`) sets the root folder.
+In the workflow configuration you can set the **keyword** (default `ccp`) and the **projects folder** (default `~/projects`).
 
 ## Requirements
 

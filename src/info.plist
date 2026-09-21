@@ -53,7 +53,7 @@
 	<key>createdby</key>
 	<string>Kirill Lorenz</string>
 	<key>description</key>
-	<string>Projektordner fuzzy suchen und Claude Code darin starten</string>
+	<string>Fuzzy-find a project folder and start Claude Code in a new Ghostty window</string>
 	<key>name</key>
 	<string>Claude Code Projects</string>
 	<key>objects</key>
@@ -74,7 +74,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>cc</string>
+				<string>{var:keyword}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -92,9 +92,9 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Buchstaben des Projektordners tippen</string>
+				<string>Type letters of the project folder</string>
 				<key>title</key>
-				<string>Claude Code Projekt öffnen</string>
+				<string>Open Claude Code project</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -132,19 +132,14 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>Stichwort: cc
+	<string>Type the keyword (default: ccp) plus a few letters to fuzzy-search the top-level folders of your projects folder. Folders containing CLAUDE.md or .claude/ rank higher.
 
-cc &lt;buchstaben&gt; durchsucht die Ordner der obersten Ebene in ~/projects per Fuzzy-Match.
-Ordner mit CLAUDE.md oder .claude/ werden bevorzugt einsortiert.
+↩ — new Ghostty window in the folder, runs claude
+⌥↩ — same, but claude --continue (resume last session)
+⌃↩ — new Ghostty window in the folder, without Claude
+⌘↩ — reveal the folder in Finder
 
-Enter  → neues Ghostty-Fenster im Ordner + claude
-⌥ Enter → claude --continue (letzte Session)
-⌃ Enter → nur Terminal im Ordner, ohne Claude
-⌘ Enter → Ordner im Finder zeigen
-
-Variablen (Workflow-Konfiguration):
-  PROJECTS_DIR  – Wurzelordner, Standard ~/projects
-</string>
+Requirements: Ghostty, the claude CLI on your PATH, and Accessibility permission for Alfred (the workflow opens the window via ⌘N and types the command).</string>
 	<key>uidata</key>
 	<dict>
 		<key>5B7A2C11-1A2B-4C3D-9E4F-000000000001</key>
@@ -162,15 +157,57 @@ Variablen (Workflow-Konfiguration):
 			<integer>40</integer>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>ccp</string>
+				<key>placeholder</key>
+				<string>ccp</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword that triggers the project search</string>
+			<key>label</key>
+			<string>Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>~/projects</string>
+				<key>placeholder</key>
+				<string>~/projects</string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Folder whose top-level subfolders are searched</string>
+			<key>label</key>
+			<string>Projects folder</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>PROJECTS_DIR</string>
+		</dict>
+	</array>
 	<key>variables</key>
-	<dict>
-		<key>PROJECTS_DIR</key>
-		<string>~/projects</string>
-	</dict>
+	<dict/>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>1.0</string>
+	<string>1.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/Bonobo007/alfred-claude-code-projects</string>
 </dict>

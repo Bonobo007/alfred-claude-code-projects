@@ -81,17 +81,17 @@ def main():
             "variables": {"mode": "new"},
             "mods": {
                 "alt": {
-                    "subtitle": "Letzte Session fortsetzen (claude --continue)",
+                    "subtitle": "Resume last session (claude --continue)",
                     "arg": path,
                     "variables": {"mode": "continue"},
                 },
                 "cmd": {
-                    "subtitle": "Im Finder zeigen",
+                    "subtitle": "Reveal in Finder",
                     "arg": path,
                     "variables": {"mode": "finder"},
                 },
                 "ctrl": {
-                    "subtitle": "Nur Terminal hier öffnen (ohne Claude)",
+                    "subtitle": "Open a terminal here (without Claude)",
                     "arg": path,
                     "variables": {"mode": "shell"},
                 },
@@ -100,7 +100,7 @@ def main():
 
     if not items:
         items = [{
-            "title": "Kein Projekt gefunden",
+            "title": "No project found",
             "subtitle": "in %s" % ROOT.replace(os.path.expanduser("~"), "~"),
             "valid": False,
         }]

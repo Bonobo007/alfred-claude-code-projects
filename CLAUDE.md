@@ -1,6 +1,6 @@
 # alfred-claude-code-projects
 
-Alfred-Workflow „Claude Code Projects“ (Stichwort `cc`): Projektordner fuzzy suchen → neues
+Alfred-Workflow „Claude Code Projects“ (Stichwort bei Kirill `cc`, Standard `ccp`): Projektordner fuzzy suchen → neues
 Ghostty-Fenster + `claude`. Nutzer-Doku: README.md (englisch, für GitHub).
 
 ## Aufbau
@@ -13,7 +13,7 @@ Ghostty-Fenster + `claude`. Nutzer-Doku: README.md (englisch, für GitHub).
 ## Fallen
 - Ghostty: jeder CLI-Start wird zum Tab; nur System Events → ⌘N ergibt ein neues Fenster.
 - Script Filter `argumenttype` muss 0 (Argument erforderlich) bleiben, sonst mischt Alfred eigene Treffer unter.
-- `prefs.plist` (lokale Nutzerwerte) nie committen.
+- `src/prefs.plist` = Kirills lokale Konfig (keyword=cc); gitignored, build.sh packt sie nicht ein.
 
 ## Release
 Version in `src/info.plist` hochzählen → `./build.sh` → `gh release create v<version> dist/*.alfredworkflow`.
