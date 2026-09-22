@@ -23,14 +23,17 @@ In the workflow configuration you can set the **keyword** (default `ccp`) and th
 
 - Alfred 5 with Powerpack
 - [Ghostty](https://ghostty.org) and the `claude` CLI on your `PATH`
-- Alfred needs **Accessibility** permission (System Settings → Privacy & Security),
-  because the workflow opens the window via ⌘N and types the command
+- Ghostty 1.3 or newer. With older versions the workflow falls back to sending ⌘N via
+  System Events, which needs **Accessibility** permission for Alfred
+  (System Settings → Privacy & Security)
 
-## Why keystrokes?
+## How it opens the window
 
-Ghostty on macOS turns every CLI launch (`open -na`, `ghostty -e …`) into a tab of the running
-instance and ignores `--working-directory` there. Sending ⌘N via System Events is the only
-reliable way to get a real new window.
+Ghostty 1.3 added an [AppleScript dictionary](https://ghostty.org/docs/features/applescript).
+The workflow creates a `surface configuration` with the project as working directory and
+`claude` as initial input, then calls `new window with configuration`. No keystrokes, no
+Accessibility permission. (Plain CLI launches like `open -na` or `ghostty -e` only give you
+a tab of the running instance, which is why v1.1 still used ⌘N.)
 
 ## Install
 

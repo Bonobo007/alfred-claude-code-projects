@@ -1,6 +1,10 @@
 #!/bin/bash
 # Opens the selected project folder in a NEW Ghostty window and starts Claude Code.
-# Same approach as the "In Ghostty öffnen" Quick Action: Cmd-N, then type the command.
+#
+# Ghostty >= 1.3 has an AppleScript dictionary: "new window with configuration"
+# takes a working directory and an initial input, so no keystrokes and no
+# Accessibility permission are needed. Older Ghostty falls back to the
+# System Events route (activate, Cmd-N, type the command).
 dir="$1"
 [ -d "$dir" ] || exit 1
 
@@ -13,13 +17,33 @@ case "${mode:-new}" in
     cmd=""
     ;;
   continue)
-    cmd=" && claude --continue"
+    cmd="claude --continue"
     ;;
   *)
-    cmd=" && claude"
+    cmd="claude"
     ;;
 esac
 
+# Preferred: Ghostty AppleScript (1.3+)
+if osascript \
+  -e 'on run argv' \
+  -e 'set theDir to item 1 of argv' \
+  -e 'set theCmd to item 2 of argv' \
+  -e 'tell application "Ghostty"' \
+  -e 'set cfg to new surface configuration' \
+  -e 'set initial working directory of cfg to theDir' \
+  -e 'if theCmd is not "" then set initial input of cfg to theCmd & linefeed' \
+  -e 'set w to new window with configuration cfg' \
+  -e 'activate' \
+  -e 'activate window w' \
+  -e 'end tell' \
+  -e 'end run' \
+  "$dir" "$cmd" 2>/dev/null; then
+  exit 0
+fi
+
+# Fallback for Ghostty < 1.3: needs Accessibility permission for Alfred.
+[ -n "$cmd" ] && cmd=" && $cmd"
 osascript \
   -e 'on run argv' \
   -e 'set theDir to item 1 of argv' \
